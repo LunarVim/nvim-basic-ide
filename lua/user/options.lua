@@ -8,7 +8,7 @@ vim.opt.hlsearch = true                         -- highlight all matches on prev
 vim.opt.ignorecase = true                       -- ignore case in search patterns
 vim.opt.mouse = "a"                             -- allow the mouse to be used in neovim
 vim.opt.pumheight = 10                          -- pop up menu height
-vim.opt.showmode = false                        -- we don't need to see things like -- INSERT -- anymore
+vim.opt.showmode = true                         -- we do want to see things like -- INSERT --
 vim.opt.showtabline = 0                         -- always show tabs
 vim.opt.smartcase = true                        -- smart case
 vim.opt.smartindent = true                      -- make indenting smarter again
@@ -25,16 +25,17 @@ vim.opt.shiftwidth = 2                          -- the number of spaces inserted
 vim.opt.tabstop = 2                             -- insert 2 spaces for a tab
 vim.opt.cursorline = true                       -- highlight the current line
 vim.opt.number = true                           -- set numbered lines
-vim.opt.laststatus = 3
-vim.opt.showcmd = false
-vim.opt.ruler = false
-vim.opt.numberwidth = 4                         -- set number column width to 2 {default 4}
+vim.opt.laststatus = 3                          -- only the last window will always have a status line
+vim.opt.showcmd = true                          -- show (partial) command in the last line of the screen (for performance)
+-- vim.opt.ruler = false                           -- hide the line and column number of the cursor position
+vim.opt.numberwidth = 4                         -- minimal number of columns to use for the line number {default 4}
 vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = false                            -- display lines as one long line
-vim.opt.scrolloff = 8                           -- is one of my fav
-vim.opt.sidescrolloff = 8
+vim.opt.scrolloff = 8                           -- minimal number of screen lines to keep above and below the cursor
+vim.opt.sidescrolloff = 8                       -- minimal number of screen columns to keep to the left and right of the cursor if wrap is `false`
 vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
-vim.opt.fillchars.eob=" "
-vim.opt.shortmess:append "c"
-vim.opt.whichwrap:append("<,>,[,],h,l")
-vim.opt.iskeyword:append("-")
+-- vim.opt.fillchars.eob=" "                       -- show empty lines at the end of a buffer as ` ` {default `~`}
+-- vim.opt.shortmess:append "c"                    -- hide all the completion messages, e.g. "-- XXX completion (YYY)", "match 1 of 2", "The only match", "Pattern not found"
+vim.opt.whichwrap:append("<,>,[,],h,l")         -- keys allowed to move to the previous/next line when the beginning/end of line is reached
+vim.opt.iskeyword:append("-")                   -- treats words with `-` as single words
+vim.opt.report = 0                              -- always show all number of lines yanked
